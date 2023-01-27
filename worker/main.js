@@ -8,9 +8,8 @@ const PLANNER =
   process.env.PLANNER !== undefined
     ? process.env.PLANNER
     : 'http://localhost:3000'
-const MULT =
-  process.env.MULT !== undefined ? parseBoolean(process.env.MULT) : true
-const ADD = process.env.ADD !== undefined ? parseBoolean(process.env.ADD) : true
+const MULT = false ;
+const ADD = false ; 
 const app = express()
 const port = process.env.PORT || 8080
 const ADDRESS =
@@ -37,7 +36,7 @@ app.use(
   })
 )
 
-if (MULT)
+if (process.env.MULT)
   app.post('/mult', (req, res) => {
     if (mult) {
       console.error('mult', 'Already working')
@@ -55,7 +54,7 @@ if (MULT)
     }, duration)
   })
 
-if (ADD)
+if (process.env.ADD )
   app.post('/add', (req, res) => {
     if (add) {
       console.error('add', 'Already working')
