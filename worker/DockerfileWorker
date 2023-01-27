@@ -1,0 +1,7 @@
+FROM node
+COPY package.json . 
+WORKDIR /usr/app
+COPY ./ ./
+RUN npm install
+EXPOSE 3000
+CMD [ "node", "main" ]
